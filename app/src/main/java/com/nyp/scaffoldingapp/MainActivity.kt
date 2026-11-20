@@ -76,8 +76,6 @@ fun AppScaffold() {
     }
 }
 
-
-
 @Composable
 fun Status(loading: Boolean) {
     if (loading) {
