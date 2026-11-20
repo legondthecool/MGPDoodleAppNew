@@ -75,3 +75,12 @@ fun AppScaffold() {
         }
     }
 }
+
+@Composable
+fun Status(loading: Boolean) {
+    if (loading) {
+        Text("Loading...")
+    } else {
+        Text("Done")
+    }
+}
