@@ -18,7 +18,7 @@ import com.nyp.scaffoldingapp.ui.theme.ScaffoldingTheme
  * and the navigation bar updates itself.
  */
 enum class Tab(val label: String, @DrawableRes val icon: Int) {
-    PAGE1("Page 1", R.drawable.ic_home),
+    PAGE1("Page color", R.drawable.ic_home),
     PAGE2("Page 2", R.drawable.ic_email),
     PAGE3("Page 3", R.drawable.ic_list),
     PAGE4("Page 4", R.drawable.ic_star)
