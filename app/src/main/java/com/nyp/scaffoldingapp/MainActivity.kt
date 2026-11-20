@@ -63,7 +63,7 @@ fun AppScaffold() {
 
                 NavigationDrawerItem(
                     label = { Text("Home") },
-                    selected = false,
+                    selected = true,
                     onClick = {
                         selectedTab = Tab.PAGE1
                         scope.launch {
@@ -88,6 +88,17 @@ fun AppScaffold() {
                     selected = false,
                     onClick = {
                         selectedTab = Tab.PAGE3
+                        scope.launch {
+                            drawerState.close()
+                        }
+                    }
+                )
+
+                NavigationDrawerItem(
+                    label = { Text("Lorem ipsum")},
+                    selected = false,
+                    onClick = {
+                        selectedTab = Tab.PAGE4
                         scope.launch {
                             drawerState.close()
                         }
