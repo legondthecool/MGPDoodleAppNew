@@ -1,6 +1,7 @@
 package com.nyp.scaffoldingapp
 
 import android.os.Bundle
+import android.preference.PreferenceActivity
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
@@ -12,7 +13,9 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.nyp.scaffoldingapp.ui.pages.*
 import com.nyp.scaffoldingapp.ui.theme.ScaffoldingTheme
 import kotlinx.coroutines.launch
@@ -22,7 +25,7 @@ import kotlinx.coroutines.launch
  * and the navigation bar updates itself.
  */
 enum class Tab(val label: String, @DrawableRes val icon: Int) {
-    PAGE1("Page color", R.drawable.ic_home),
+    PAGE1("Page 1", R.drawable.ic_home),
     PAGE2("Page 2", R.drawable.ic_email),
     PAGE3("Page 3", R.drawable.ic_list),
     PAGE4("Page 4", R.drawable.ic_star)
@@ -58,6 +61,8 @@ fun AppScaffold() {
 
                 Text(
                     "Menu",
+                    fontSize = 30.sp,
+                    fontWeight = FontWeight.Bold,
                     modifier = Modifier.padding(16.dp)
                 )
 
