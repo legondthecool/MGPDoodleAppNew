@@ -76,7 +76,7 @@ fun AppScaffold() {
                         }
                     }
                 )
-
+                //settings
                 NavigationDrawerItem(
                     label = { Text("Settings") },
                     selected = false,
