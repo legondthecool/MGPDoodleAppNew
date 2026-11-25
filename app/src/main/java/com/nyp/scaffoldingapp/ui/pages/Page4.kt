@@ -55,7 +55,7 @@ fun Page4(modifier: Modifier = Modifier) {
         Spacer(Modifier.height(16.dp))
 
         Text(
-            "Not connected yet — see the Week 9 slides.",
+            "Guest account.",
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
