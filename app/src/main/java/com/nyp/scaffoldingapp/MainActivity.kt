@@ -7,8 +7,14 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.annotation.DrawableRes
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.BorderColor
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.*
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
@@ -74,7 +80,14 @@ fun AppScaffold() {
                         scope.launch {
                             drawerState.close()
                         }
-                    }
+                    },
+                    icon = {
+                        Icon(
+                            imageVector = Icons.Default.Home,
+                            contentDescription = " ",
+                            modifier = Modifier.size(16.dp)
+                        )
+                    },
                 )
                 //settings
                 NavigationDrawerItem(
@@ -85,7 +98,14 @@ fun AppScaffold() {
                         scope.launch {
                             drawerState.close()
                         }
-                    }
+                    },
+                    icon = {
+                        Icon(
+                            imageVector = Icons.Default.Settings,
+                            contentDescription = " ",
+                            modifier = Modifier.size(16.dp)
+                        )
+                    },
                 )
 
                 NavigationDrawerItem(
@@ -96,18 +116,33 @@ fun AppScaffold() {
                         scope.launch {
                             drawerState.close()
                         }
-                    }
+                    },
+                    icon = {
+                        Icon(
+                            imageVector = Icons.Default.BorderColor,
+                            contentDescription = " ",
+                            modifier = Modifier.size(16.dp)
+                        )
+                    },
+
                 )
 
                 NavigationDrawerItem(
-                    label = { Text("Lorem ipsum")},
+                    label = { Text("Log in")},
                     selected = false,
                     onClick = {
                         selectedTab = Tab.PAGE4
                         scope.launch {
                             drawerState.close()
                         }
-                    }
+                    },
+                    icon = {
+                        Icon(
+                            imageVector = Icons.Default.AccountCircle,
+                            contentDescription = " ",
+                            modifier = Modifier.size(16.dp)
+                        )
+                    },
                 )
 
             }

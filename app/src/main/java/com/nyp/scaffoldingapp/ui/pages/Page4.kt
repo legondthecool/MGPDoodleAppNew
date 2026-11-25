@@ -1,6 +1,9 @@
 package com.nyp.scaffoldingapp.ui.pages
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -26,10 +29,14 @@ fun Page4(modifier: Modifier = Modifier) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text("Page 4", style = MaterialTheme.typography.headlineMedium)
+        Icon(
+            imageVector = Icons.Default.AccountCircle,
+            contentDescription = " ",
+            modifier = Modifier.size(48.dp)
+        )
         Spacer(Modifier.height(8.dp))
         Text(
-            "Sample Content",
+            "Log in to your account",
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
@@ -42,7 +49,7 @@ fun Page4(modifier: Modifier = Modifier) {
             },
             modifier = Modifier.fillMaxWidth().height(56.dp)
         ) {
-            Text("START")
+            Text("Log in")
         }
 
         Spacer(Modifier.height(16.dp))
