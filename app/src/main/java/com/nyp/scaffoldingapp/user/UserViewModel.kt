@@ -13,15 +13,22 @@ class UserViewModel : ViewModel() {
     // Private and mutable inside; public and read-only outside.
     private val _state = MutableStateFlow<UiState>(UiState.Loading)
     val state: StateFlow<UiState> = _state
-
-    // TODO 5: add an init block that calls load(),
-    //         so the first fetch starts as soon as the ViewModel is created.
+    init {
+        load()
+    }
 
     fun load() {
-        // TODO 6: launch a coroutine in viewModelScope.
-        // TODO 7: inside it, set _state.value to UiState.Loading.
-        // TODO 8: try UserApi.fetchUser(), and set _state.value to UiState.Ready(user).
-        // TODO 9: catch a failure, and set _state.value to UiState.Failed
-        //         with a message a user can act on. Never show the raw exception.
+        viewModelScope.launch {
+            _state.value = UiState.Loading
+            try {
+                val user = UserApi.fetchUser()
+                _state.value = UiState.Ready(user)
+
+            } catch (e: Exception) {
+                _state.value = UiState.Failed(
+                    "Unable to load user data. Please check your connection and try again."
+                )
+            }
+        }
     }
 }

@@ -18,6 +18,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.nyp.scaffoldingapp.data.User
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.ui.graphics.Color
 
 @Composable
 fun UserScreen(
@@ -39,19 +41,76 @@ fun UserScreen(
 
 @Composable
 private fun Skeleton() {
-    // TODO 10: show grey blocks in the shape of the content, not a spinner.
-    //          See the "skeleton" slide: Box + height + fillMaxWidth + background.
-    Text("Loading…")
+    Column(
+        modifier = Modifier.padding(16.dp)
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth(0.7f)
+                .height(24.dp)
+                .background(Color.LightGray)
+        )
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(16.dp)
+                .background(Color.LightGray)
+        )
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        Box(
+            modifier = Modifier
+                .fillMaxWidth(0.5f)
+                .height(16.dp)
+                .background(Color.LightGray)
+        )
+    }
 }
 
 @Composable
 private fun UserContent(user: User) {
-    // TODO 11: show the user's name, email and city, using the theme's text styles.
-    Text(user.name)
-}
+    Column(
+        modifier = Modifier.padding(16.dp)
+    ) {
+        Text(
+            text = user.name,
+            style = MaterialTheme.typography.headlineSmall
+        )
 
+        Text(
+            text = user.email,
+            style = MaterialTheme.typography.bodyLarge
+        )
+
+        Text(
+            text = user.city,
+            style = MaterialTheme.typography.bodyMedium
+        )
+    }
+}
 @Composable
-private fun ErrorMessage(message: String, onRetry: () -> Unit) {
-    // TODO 12: show the message, and a Retry button that calls onRetry.
-    Text(message)
+private fun ErrorMessage(
+    message: String,
+    onRetry: () -> Unit
+) {
+    Column(
+        modifier = Modifier.padding(16.dp)
+    ) {
+        Text(
+            text = message,
+            color = MaterialTheme.colorScheme.error
+        )
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        Button(
+            onClick = onRetry
+        ) {
+            Text("Retry")
+        }
+    }
 }
