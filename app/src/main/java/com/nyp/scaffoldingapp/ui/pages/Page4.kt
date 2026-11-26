@@ -1,5 +1,6 @@
 package com.nyp.scaffoldingapp.ui.pages
 
+import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
@@ -10,7 +11,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.*
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.nyp.scaffoldingapp.data.User
+import com.nyp.scaffoldingapp.ui.user.UserViewModel
 import kotlinx.coroutines.Dispatchers
 import java.net.*
 import kotlinx.coroutines.launch
@@ -30,7 +33,7 @@ import kotlin.time.Duration.Companion.parse
  * See the Week 9 slides. Do not guess at it from here.
  */
 @Composable
-fun Page4(modifier: Modifier = Modifier) {
+fun Page4(modifier: Modifier = Modifier,  userViewModel: UserViewModel = viewModel()) {
     Column(
         modifier.fillMaxSize().padding(24.dp),
         verticalArrangement = Arrangement.Center,
@@ -52,7 +55,8 @@ fun Page4(modifier: Modifier = Modifier) {
 
         Button(
             onClick = {
-                // TODO (Week 9): launch your game Activity for a result.
+                Log.d("DEBUG", "BUTTON CLICKED")
+                userViewModel.load()
             },
             modifier = Modifier.fillMaxWidth().height(56.dp)
         ) {

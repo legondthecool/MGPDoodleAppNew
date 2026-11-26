@@ -1,4 +1,5 @@
 package com.nyp.scaffoldingapp.data
+import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
@@ -17,13 +18,16 @@ object UserApi {
 
     // Main-safe: switches to the IO thread itself, so it can be called from anywhere.
     suspend fun fetchUser(): User = withContext(Dispatchers.IO) {
+        Log.d("DEBUG", "Opening connection")
         val connection = (URL(ENDPOINT).openConnection() as HttpURLConnection).apply {
             requestMethod = "GET"
             connectTimeout = TIMEOUT_MS
             readTimeout = TIMEOUT_MS
         }
         try {
+            Log.d("DEBUG", "Reading response")
             val body = connection.inputStream.bufferedReader().use { it.readText() }
+            Log.d("DEBUG", "Response received")
             parse(body)
         } finally {
             connection.disconnect()
@@ -31,8 +35,12 @@ object UserApi {
     }
 
     private fun parse(body: String): User {
-        // TODO 4: turn the text into a User with JSONObject(body).
-        //         Read "id", "name", "email", and "city" from inside "address".
-        error("TODO 4: parse() is not written yet")
+        val json = JSONObject(body)
+        return User(
+            id = json.getInt("id"),
+            name = json.getString("name"),
+            email = json.getString("email"),
+            city = json.getJSONObject("address").getString("city")
+        )
     }
 }
